@@ -1,20 +1,19 @@
 # Clothes Warehouse with Distribution Centre Integration
 
-This project consists of two Spring Boot applications:
-1. **Clothes Warehouse** - Main application with user management, item management, and admin features
+My project has two Spring Boot applications:
+1. **Clothes Warehouse** - Main application with user|item management, and admin features
 2. **Distribution Centre Manager** - REST API for managing distribution centres and their inventory
 
 ## Project Structure
 
 ### Clothes Warehouse
-- Spring Boot 3.1.0 application with Spring Security, Thymeleaf, and Bootstrap
-- User roles: admin, warehouse employee, regular user
-- Features: item management, user registration, role-based access control
+- Spring Boot with Spring Security, Thymeleaf, and Bootstrap
+- User roles: admin, employee, regular user
+- Features: item management, user registration, role access control
 - Integration with Distribution Centre Manager for requesting items
 
 ### Distribution Centre Manager
-- Spring Boot 3.1.0 REST API with Basic Authentication
-- Models: Distribution Centre, Item
+- Spring Boot ,REST API 
 - Features: manage distribution centres, items, and handle item requests
 - Two Spring profiles: H2 (dev) and PostgreSQL (qa)
 
@@ -53,7 +52,7 @@ cd Assignment1
   - GET /api/distribution-centres/closest - Find closest distribution centre with item
   - POST /api/items/request - Request an item from a distribution centre
 
-## Testing the Integration
+## Testing 
 
 1. Log in to Clothes Warehouse as admin
 2. Navigate to the Distribution Centres page
@@ -79,11 +78,10 @@ cd Assignment1
 
 ## Technologies Used
 
-- Spring Boot 3.1.0
-- Spring Security
-- Spring Data JPA
+- Spring Boot 
+- Spring Security|Data JPA
 - Thymeleaf
-- Bootstrap 5
+- Bootstrap 
 - H2 Database
 - PostgreSQL
 - Docker
