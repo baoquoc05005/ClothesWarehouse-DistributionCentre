@@ -41,8 +41,8 @@ cd Assignment1
 
 ### Clothes Warehouse
 - URL: http://localhost:8080
-- Admin credentials: username: admin, password: admin
-- Employee credentials: username: employee, password: employee
+- Admin role: username: admin, password: admin
+- Employee role: username: employee, password: employee
 
 ### Distribution Centre Manager API
 - URL: http://localhost:8081/api
