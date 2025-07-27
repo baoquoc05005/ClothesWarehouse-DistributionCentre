@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Edit Item')">
+<body>
+<div th:replace="fragments/layout :: navbar"></div>
+<div class="container">
+    <h2>Edit Item</h2>
+    <form th:action="@{/items/edit/{id}(id=${item.id})}" th:object="${item}" method="post" class="form">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control">
+            <div th:if="${#fields.hasErrors('name')}" class="text-danger">
+                <p th:errors="*{name}">Name Error</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <select id="brand" th:field="*{brand}" class="form-control">
+                <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('brand')}" class="text-danger">
+                <p th:errors="*{brand}">Brand Error</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="yearOfCreation">Year of Creation</label>
+            <input type="number" id="yearOfCreation" th:field="*{yearOfCreation}" class="form-control">
+            <div th:if="${#fields.hasErrors('yearOfCreation')}" class="text-danger">
+                <p th:errors="*{yearOfCreation}">Year Error</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" step="0.01" id="price" th:field="*{price}" class="form-control">
+            <div th:if="${#fields.hasErrors('price')}" class="text-danger">
+                <p th:errors="*{price}">Price Error</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Item</button>
+        <a th:href="@{/items/list}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>
