@@ -1,0 +1,11 @@
+com\example\distributioncentre\service\ItemService.class
+com\example\distributioncentre\repository\ItemRepository.class
+com\example\distributioncentre\controller\ItemController.class
+com\example\distributioncentre\DistributionCentreApplication.class
+com\example\distributioncentre\repository\DistributionCentreRepository.class
+com\example\distributioncentre\service\DistributionCentreService.class
+com\example\distributioncentre\controller\DistributionCentreController.class
+com\example\distributioncentre\model\Item.class
+com\example\distributioncentre\config\DataInitializer.class
+com\example\distributioncentre\config\SecurityConfig.class
+com\example\distributioncentre\model\DistributionCentre.class

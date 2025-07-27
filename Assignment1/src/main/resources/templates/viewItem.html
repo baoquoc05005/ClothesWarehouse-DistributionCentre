@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Item Details')">
+<body>
+<div th:replace="fragments/layout :: navbar"></div>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Item Details</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th style="width: 30%">ID</th>
+                            <td th:text="${item.id}"></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td th:text="${item.name}"></td>
+                        </tr>
+                        <tr>
+                            <th>Brand</th>
+                            <td th:text="${item.brand}"></td>
+                        </tr>
+                        <tr>
+                            <th>Year of Creation</th>
+                            <td th:text="${item.yearOfCreation}"></td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td th:text="${item.price} + ' €'"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <a th:href="@{/items/edit/{id}(id=${item.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/items/delete/{id}(id=${item.id})}" class="btn btn-danger" 
+                       onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                    <a th:href="@{/items/list}" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

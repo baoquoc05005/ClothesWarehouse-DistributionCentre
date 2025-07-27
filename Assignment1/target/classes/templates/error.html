@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Error')">
+<body>
+<div th:replace="fragments/layout :: navbar"></div>
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header bg-danger text-white">
+            <h2 class="mb-0">Error Occurred</h2>
+        </div>
+        <div class="card-body">
+            <h4>Sorry, there was an error processing your request.</h4>
+            <p th:if="${status}" class="mt-3">
+                <strong>Status:</strong> <span th:text="${status}"></span>
+            </p>
+            <p th:if="${error}" class="mt-3">
+                <strong>Error:</strong> <span th:text="${error}"></span>
+            </p>
+            <p th:if="${message}" class="mt-3">
+                <strong>Message:</strong> <span th:text="${message}"></span>
+            </p>
+            <div class="mt-4">
+                <a href="/" class="btn btn-primary">Return to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

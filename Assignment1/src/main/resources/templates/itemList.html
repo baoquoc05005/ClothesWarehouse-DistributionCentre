@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Item List')">
+<body>
+<div th:replace="fragments/layout :: navbar"></div>
+<div class="container">
+    <h2>Item List</h2>
+    <a href="/items/add" class="btn btn-success mb-3">Add New Item</a>
+    <a href="/items/list" class="btn btn-secondary mb-3">All Items</a>
+    <a href="/items/sort" class="btn btn-info mb-3">Sort by Brand</a>
+    <a href="/items/sort-price-asc" class="btn btn-info mb-3">Sort by Price ↑</a>
+    <a href="/items/sort-price-desc" class="btn btn-info mb-3">Sort by Price ↓</a>
+    <a href="/items/price-filter" class="btn btn-warning mb-3">Filter by Price</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Year of Creation</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.brand}"></td>
+            <td th:text="${item.yearOfCreation}"></td>
+            <td th:text="${item.price}"></td>
+            <td>
+                <a th:href="@{/items/view/{id}(id=${item.id})}" class="btn btn-sm btn-info mr-1">View</a>
+                <a th:href="@{/items/edit/{id}(id=${item.id})}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <a th:href="@{/items/delete/{id}(id=${item.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation" th:if="${totalPages > 1}">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/items/list(page=0, size=5)}" aria-label="First">
+                    <span aria-hidden="true">&laquo;&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/items/list(page=${currentPage - 1}, size=5)}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            
+            <li class="page-item" th:each="i: ${#numbers.sequence(0, totalPages - 1)}" 
+                th:classappend="${currentPage == i ? 'active' : ''}">
+                <a class="page-link" th:href="@{/items/list(page=${i}, size=5)}" th:text="${i + 1}"></a>
+            </li>
+            
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/items/list(page=${currentPage + 1}, size=5)}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/items/list(page=${totalPages - 1}, size=5)}" aria-label="Last">
+                    <span aria-hidden="true">&raquo;&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="text-center mt-2" th:if="${totalItems > 0}">
+        <p>Showing <span th:text="${currentPage * 5 + 1}"></span> to 
+           <span th:text="${currentPage * 5 + items.size()}"></span> of 
+           <span th:text="${totalItems}"></span> items</p>
+    </div>
+    <div class="text-center mt-2" th:if="${totalItems == 0}">
+        <p>No items found</p>
+    </div>
+</div>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>
