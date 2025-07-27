@@ -33,7 +33,7 @@ docker-compose up -d
 
 ### Clothes Warehouse
 ```bash
-cd Assignment1
+cd ClothesWarehouse
 ./mvnw spring-boot:run
 ```
 
